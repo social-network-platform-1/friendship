@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004-add-friendship-addressee-status-index
+      author: Timur
+      changes:
+        - createIndex:
+            indexName: idx_friendship_addressee_status
+            tableName: friendship
+            columns:
+              - column:
+                  name: addressee_id
+              - column:
+                  name: status

@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-add-friendship-requester-status-index
+      author: Timur
+      changes:
+        - createIndex:
+            indexName: idx_friendship_requester_status
+            tableName: friendship
+            columns:
+              - column:
+                  name: requester_id
+              - column:
+                  name: status

@@ -2,3 +2,18 @@ databaseChangeLog:
 
   - include:
       file: db/changelog/v1/001-create-friendship.yaml
+
+  - include:
+      file: db/changelog/v1/002-add-friendship-unique-pair.yaml
+
+  - include:
+      file: db/changelog/v1/003-add-friendship-requester-status-index.yaml
+
+  - include:
+      file: db/changelog/v1/004-add-friendship-addressee-status-index.yaml
+
+  - include:
+      file: db/changelog/v1/005-add-friendship-self-check.yaml
+
+  - include:
+      file: db/changelog/v1/006-create-outbox-event.yaml

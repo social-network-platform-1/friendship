@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-add-friendship-self-check
+      author: Timur
+      changes:
+        - sql:
+            sql: >
+              ALTER TABLE friendship
+              ADD CONSTRAINT chk_friendship_different_users
+              CHECK (requester_id <> addressee_id);

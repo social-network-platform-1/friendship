@@ -1,11 +1,12 @@
 package com.social.friendship.domain.DTO.event;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
 public record FriendAcceptedEvent(
-        @NotBlank UUID userId,
-        @NotBlank UUID friendId
+        @NotNull UUID userId,
+        @NotNull UUID friendId
 ) {
 }

@@ -1,10 +1,12 @@
 databaseChangeLog:
+
   - changeSet:
-      id: 001-create-friendship
+      id: 006-create-outbox-event
       author: Timur
+
       changes:
         - createTable:
-            tableName: friendship
+            tableName: outbox_event
             columns:
 
               - column:
@@ -15,20 +17,20 @@ databaseChangeLog:
                     nullable: false
 
               - column:
-                  name: requester_id
-                  type: UUID
+                  name: topic
+                  type: VARCHAR(255)
                   constraints:
                     nullable: false
 
               - column:
-                  name: addressee_id
-                  type: UUID
+                  name: event_type
+                  type: VARCHAR(255)
                   constraints:
                     nullable: false
 
               - column:
-                  name: status
-                  type: VARCHAR(20)
+                  name: payload
+                  type: TEXT
                   constraints:
                     nullable: false
 
@@ -39,7 +41,7 @@ databaseChangeLog:
                     nullable: false
 
               - column:
-                  name: updated_at
-                  type: TIMESTAMP WITH TIME ZONE
+                  name: processed
+                  type: BOOLEAN
                   constraints:
                     nullable: false

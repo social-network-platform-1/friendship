@@ -1,3 +1,4 @@
+PS D:\Project\social-network\friendship> Get-Content .gitignore
 HELP.md
 .gradle
 build/

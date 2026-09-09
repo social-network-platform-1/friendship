@@ -6,9 +6,11 @@ import com.social.friendship.domain.DTO.event.FriendRequestSentEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 @RequiredArgsConstructor
@@ -49,5 +51,13 @@ public class KafkaProducer {
                         log.info("Friend-removed event sent, offset={}", result.getRecordMetadata().offset());
                     }
                 });
+    }
+
+
+    public CompletableFuture<SendResult<String, Object>> sendEvent(
+            String topic,
+            String payload
+    ) {
+        return kafkaTemplate.send(topic, payload);
     }
 }

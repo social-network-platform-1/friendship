@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-add-friendship-unique-pair
+      author: Timur
+      changes:
+        - sql:
+            sql: >
+              CREATE UNIQUE INDEX ux_friendship_user_pair
+              ON friendship (
+                LEAST(requester_id, addressee_id),
+                GREATEST(requester_id, addressee_id)
+              );

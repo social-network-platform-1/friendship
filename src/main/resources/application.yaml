@@ -6,8 +6,8 @@ spring:
     name: friendship
 
   datasource:
-    url: jdbc:postgresql://localhost:5433/myfriendship
-    username: myfriend
+    url: jdbc:postgresql://friendship-postgres:5432/friendshipdb
+    username: friendshipuser
     password: secret
     driver-class-name: org.postgresql.Driver
 
@@ -22,8 +22,13 @@ spring:
   liquibase:
     change-log: classpath:db/changelog/changelog-master.yaml
 
+  data:
+    redis:
+      host: redis
+      port: 6379
+
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: kafka:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
@@ -32,4 +37,4 @@ security:
   jwt:
     issuer: user-service
     access-token-ttl: 15m
-    secret: secret
+    secret: ${SECURITY_JWT_SECRET}
